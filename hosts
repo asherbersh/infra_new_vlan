@@ -1,0 +1,2 @@
+[junos]
+place-asher-r1 ansible_host=10.9.106.30

@@ -1,0 +1,21 @@
+---
+  junos:
+    hosts:
+      floor7-sw-lab:
+        ansible_host: 10.9.106.30
+      ptsw1-floor7:
+        ansible_host: 10.9.106.37    
+      ptsw2-floor7:
+        ansible_host: 10.9.106.38
+  ex3400:
+    hosts:    
+      oren-flr1sw-B1:
+        ansible_host: 10.9.106.11   
+  home:
+    hosts:
+      home-vsrx:
+        ansible_host: 192.168.20.243  
+  testing:
+    hosts:
+      test_switch:
+        ansible_host: 10.9.106.30
