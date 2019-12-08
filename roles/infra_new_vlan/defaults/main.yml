@@ -1,2 +1,8 @@
 ---
 # defaults file for infra_new_vlan
+vlan_id: 92
+vlan_name: rnd_devops
+is_layer3: True
+subnet: /24
+vlan_type: users
+location: PT
