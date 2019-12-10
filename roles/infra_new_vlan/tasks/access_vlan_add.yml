@@ -1,0 +1,8 @@
+---
+- name: add new vlan to the switch
+  junos_config:
+    lines:
+      - set vlans {{vlan_name}} vlan-id {{vlan_id}}
+  
+
+  

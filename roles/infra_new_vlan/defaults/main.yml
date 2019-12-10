@@ -1,8 +1,10 @@
 ---
 # defaults file for infra_new_vlan
-vlan_id: 92
-vlan_name: rnd_devops
+vlan_id: 30
+vlan_name: auto_test
 is_layer3: True
 subnet: /24
 vlan_type: users
 location: PT
+site_id: 9
+access_port_add: ge-0/0/0
