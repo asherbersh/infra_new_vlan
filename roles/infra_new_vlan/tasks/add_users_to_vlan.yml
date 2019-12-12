@@ -1,17 +1,30 @@
 ---
 
-- name: add vlans configuration for user type vlan
+- name: add vlans configuration for user type vlan (ex3300)
   junos_config:
     lines:
        - set ethernet-switching-options voip interface {{vlan_name}} vlan voip 
        - set protocols vstp vlan {{vlan_name}} interface {{vlan_name}} edge
+  when: hostvars[inventory_hostname].model=="ex3300"
  
-
-
-- name: add a port to a specific interface range
+- name: add a port to a specific interface range (ex3300)
   junos_config:
     lines:
       - set interfaces interface-range {{vlan_name}} member {{access_port_add}}
       - set interfaces interface-range {{vlan_name}} unit 0 family ethernet-switching port-mode access
       - set interfaces interface-range {{vlan_name}} unit 0 family ethernet-switching vlan members {{vlan_name}}
+  when: hostvars[inventory_hostname].model=="ex3300"
  
+- name: add vlans configuration for user type vlan (ex3400)
+  junos_config:
+    lines:
+       - set switch-options voip interface {{vlan_name}} vlan voip
+  when: hostvars[inventory_hostname].model=="ex3400"
+ 
+- name: add a port to a specific interface range (ex3400)
+  junos_config:
+    lines:
+      - set interfaces interface-range {{vlan_name}} member {{access_port_add}}
+      - set interfaces interface-range {{vlan_name}} unit 0 family ethernet-switching interface-mode access
+      - set interfaces interface-range {{vlan_name}} unit 0 family ethernet-switching vlan members {{vlan_name}}
+  when: hostvars[inventory_hostname].model=="ex3400"

@@ -5,3 +5,9 @@
 
 - name: access switches new vlan implement
   import_tasks: "access_vlan_add.yml"
+  when: hostvars[inventory_hostname].type=="access"  
+
+- name: backbone switches new vlan implement
+  import_tasks: "backbone_vlan_add.yml"
+  when: hostvars[inventory_hostname].type=="backbone"  
+
