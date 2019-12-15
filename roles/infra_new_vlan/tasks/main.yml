@@ -1,7 +1,4 @@
 ---
-# tasks file for infra_new_vlan
-# - name: "distribution switches new vlan implement "
-#   import_tasks: "dist_vlan_add.yml"
 
 - name: access switches new vlan implement
   import_tasks: "access_vlan_add.yml"
@@ -10,4 +7,3 @@
 - name: backbone switches new vlan implement
   import_tasks: "backbone_vlan_add.yml"
   when: hostvars[inventory_hostname].type=="backbone"  
-
