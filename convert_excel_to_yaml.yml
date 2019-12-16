@@ -1,0 +1,9 @@
+---
+  - hosts: localhost
+  
+    tasks:
+     - name: set playbook vars from excel data
+       excel_to_dict:
+         data_file: "vlan_details.xlsx"
+         yaml_file_destination: "group_vars/testing/vlan_details.yml"
+       register: result

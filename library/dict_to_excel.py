@@ -21,7 +21,7 @@ def data_to_excel(col, data, save_fn, newline=True):
 
 
 def dict_to_excel(dict_data, save_fn, newline=True):
-    # get data to enter to exisiting excel file and insert it in the next free raw
+    # get dictonary to enter to exisiting excel file and insert all data in the next free raw
     # dict_data - data to insert to excel that include column and data to be insert
     # save_fn - file to be saved
     # newline - to insert the data in a new line or in the last line

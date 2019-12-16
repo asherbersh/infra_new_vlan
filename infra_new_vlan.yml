@@ -1,4 +1,17 @@
 ---
+
+- name: convert excel variables to yaml varibales
+  import_playbook: convert_excel_to_yaml.yml
+
+
 - hosts: testing 
-  roles:  
-    - role: infra_new_vlan
+  tasks:
+    - name: print debug
+      debug:
+        msg: "{{vlan_name}}"
+
+  # roles:  
+  #   - role: infra_new_vlan
+
+ 
+
