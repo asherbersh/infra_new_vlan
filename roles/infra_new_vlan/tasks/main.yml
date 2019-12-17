@@ -2,5 +2,10 @@
 - name: include vlan new vlan vars file  
   include_vars: roles/infra_new_vlan/defaults/vlan_details.yml
 
-- name: access & backbone switches new vlan implement
+- name: access & backbone switches new vlan implement (junos)
   import_tasks: "junos_new_vlan_add.yml"
+  when: hostvars[inventory_hostname].group == "junos"  
+
+- name: access & backbone switches new vlan implement (cisco)
+  import_tasks: "cisco_new_vlan_add.yml"
+  when: hostvars[inventory_hostname].group== "cisco"
