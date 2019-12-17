@@ -1,8 +1,8 @@
 ---
 
-- name: cretae backbone config using template
+- name: cretae vlan config using template
   template: 
-    src: backbone_vlan_temp.j2
+    src: junos_new_vlan_template.j2
     dest: "./roles/infra_new_vlan/files/{{inventory_hostname}}.txt"
 
 - name: add new vlan to the switch

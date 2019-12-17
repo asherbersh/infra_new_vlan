@@ -5,13 +5,9 @@
 
 
 - hosts: testing 
-  tasks:
-    - name: print debug
-      debug:
-        msg: "{{vlan_name}}"
+  roles:  
+    - role: infra_new_vlan
 
-  # roles:  
-  #   - role: infra_new_vlan
 
  
 
