@@ -9,5 +9,4 @@
 # site_id: 9
 # access_port_add: ge-0/0/0
 # dhcp_server: 192.168.100.20
-
-    
+# is_dhcp: True
