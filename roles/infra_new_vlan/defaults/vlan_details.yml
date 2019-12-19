@@ -1,6 +1,6 @@
 access_port_add: ge-0/0/0
 dhcp_server: 192.168.100.20
-is_dhcp: 'False'
+is_dhcp: 'True'
 is_layer3: 'True'
 location: PT
 site_id: '9'

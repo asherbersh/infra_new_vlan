@@ -4,10 +4,12 @@
   import_playbook: convert_excel_to_yaml.yml
 
 
-- hosts: cisco 
+- hosts: cisco
+  any_errors_fatal: true 
   roles:  
     - role: infra_new_vlan
 
 - hosts: junos
+  any_errors_fatal: true
   roles:  
     - role: infra_new_vlan
