@@ -2,13 +2,22 @@
 
 - name: test if vlan exist
   junos_command:
-   commands: show vlan {{vlan_id}}
+   commands: 
+    - show vlan {{vlan_id}}
+    - show vlan {{vlan_name}}
    display: xml   
   register: result
 
 - set_fact:
-    is_vlan_exists: "{{result['output'][0]['rpc-reply']['error']['message'] | default('true') }}"
+    is_vlan_id_exists: "{{result['output'][0]['rpc-reply']['error']['message'] | default('true') }}"
+    is_vlan_name_exists: "{{result['output'][1]['rpc-reply']['error']['message'] | default('true') }}"
 
-- fail:
-    msg: "the vlan you are trying to configure is already exist in one of the switches "
-  when: is_vlan_exists==true
+- name: check if vlan id exists before implementing 
+  fail:
+    msg: "the vlan id you are trying to configure is already exist in one of the switches "
+  when: is_vlan_id_exists==true
+
+- name: check if vlan name exists before implementing 
+  fail:
+    msg: "the vlan name you are trying to configure is already exist in one of the switches "
+  when: is_vlan_name_exists==true
