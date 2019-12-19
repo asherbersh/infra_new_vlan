@@ -14,7 +14,7 @@ except NameError:
     FileNotFoundError = IOError
 
 
-config_file = 'library/xlsx_inventory.cfg'
+config_file = 'xlsx_inventory.cfg'
 default_group = 'NO_GROUP'
 
 
