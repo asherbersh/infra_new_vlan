@@ -1,0 +1,19 @@
+---
+
+- block:
+    - name: test if vlan exist (cisco)
+      ios_command:
+        commands: 
+          - show vlan id {{vlan_id}}
+    - set_fact:
+        is_vlan_id_exists: true   
+
+  rescue:
+    - debug:
+        msg: "everything is ok the vlan does not exists "
+    - set_fact:
+        is_vlan_id_exists: false    
+
+- fail:
+     msg: "the vlan name you are trying to configure is already exist in one of the switches"    
+  when: is_vlan_id_exists==true

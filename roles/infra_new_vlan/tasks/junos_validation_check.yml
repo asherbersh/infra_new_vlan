@@ -1,0 +1,47 @@
+---
+
+- name: test if vlan exist
+  junos_command:
+   commands: 
+    - show vlan {{vlan_id}}
+    - show vlan {{vlan_name}}
+   display: xml   
+  register: result
+
+- name: testing for ex3300 switches
+  block:
+    - set_fact:
+        is_vlan_id_exists: "{{result['output'][0]['rpc-reply']['error']['message'] | default('true') }}"
+        is_vlan_name_exists: "{{result['output'][1]['rpc-reply']['error']['message'] | default('true') }}"
+
+    - name: check if vlan id exists before implementing (ex3400)
+      fail:
+        msg: "the vlan id you are trying to configure is already exist in one of the switches "
+      when: is_vlan_id_exists==true
+
+    - name: check if vlan name exists before implementing (ex3300)
+      fail:
+        msg: "the vlan name you are trying to configure is already exist in one of the switches "
+      when: is_vlan_name_exists==true
+
+  when: hostvars[inventory_hostname].group == "junos" and hostvars[inventory_hostname].model=="ex3300"
+
+
+- name: testing for qfx or ex3400 switches
+  block:
+    - set_fact:
+        is_vlan_id_exists: "{{result['output'][0]['rpc-reply']['l2ng-l2ald-vlan-instance-information']}}"
+        is_vlan_name_exists: "{{result['output'][1]['rpc-reply']['l2ng-l2ald-vlan-instance-information']}}"
+
+    - name: check if vlan id exists before implementing (qfx/ex3400)
+      fail:
+        msg: "the vlan id you are trying to configure is already exist in one of the switches "
+      when: is_vlan_id_exists!=""
+
+    - name: check if vlan name exists before implementing (qfx/ex3400)
+      fail:
+        msg: "the vlan name you are trying to configure is already exist in one of the switches "
+      when: is_vlan_name_exists!=""
+      
+  when: hostvars[inventory_hostname].group == "junos" and (hostvars[inventory_hostname].model=="ex3400" or hostvars[inventory_hostname].model=="qfx")
+
