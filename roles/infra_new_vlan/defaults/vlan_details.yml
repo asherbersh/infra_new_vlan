@@ -1,6 +1,6 @@
 dhcp_server: 192.168.100.20
-is_dhcp: 'false'
-is_layer3: 'true'
+is_dhcp: 'True'
+is_layer3: 'True'
 location: PT
 site_id: '9'
 subnet: /24

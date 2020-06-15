@@ -6,6 +6,10 @@
   import_tasks: "junos_validation_check.yml"
   when: hostvars[inventory_hostname].group == "junos"
 
+- name: valadition that check if the new vlan exist (junos test machines)
+  import_tasks: "junos_validation_check.yml"
+  when: hostvars[inventory_hostname].group == "test_junos"
+
 - name: valadition that check if the new vlan exist (cisco)
   import_tasks: "cisco_validation_check.yml"
   when: hostvars[inventory_hostname].group == "cisco"
@@ -13,6 +17,10 @@
 - name: access & backbone switches new vlan implement (junos)
   import_tasks: "junos_new_vlan_add.yml"
   when: hostvars[inventory_hostname].group == "junos"  
+
+- name: access & backbone switches new vlan implement (junos test machines)
+  import_tasks: "junos_new_vlan_add.yml"
+  when: hostvars[inventory_hostname].group == "test_junos"  
 
 - name: access & backbone switches new vlan implement (cisco)
   import_tasks: "cisco_new_vlan_add.yml"
