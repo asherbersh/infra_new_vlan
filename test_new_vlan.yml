@@ -1,0 +1,9 @@
+---
+
+- name: convert excel variables to yaml varibales
+  import_playbook: convert_excel_to_yaml.yml
+
+- hosts: test_junos
+  any_errors_fatal: true
+  roles:  
+    - role: infra_new_vlan

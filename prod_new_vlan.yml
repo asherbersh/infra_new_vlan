@@ -13,8 +13,3 @@
   any_errors_fatal: true
   roles:  
     - role: infra_new_vlan
-
-- hosts: test_junos
-  any_errors_fatal: true
-  roles:  
-    - role: infra_new_vlan
